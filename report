@@ -21,7 +21,7 @@ def main():
             PATH += '/'
     else:
         print('''You need to specify "project-name" and "path"
-        example: latex new-project ~/Documents''')
+        example: report new-project ~/Documents''')
     
     ABSOLUTE = PATH + PROJECT
     newproject(SOURCE, ABSOLUTE)
