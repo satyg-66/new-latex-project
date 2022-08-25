@@ -1,0 +1,37 @@
+#!/bin/env python3
+
+# AUTHOR: Jonas Ingemarsson
+# DESC: A script to create a new LaTeX project based on a predefined template.
+# DATE: August 24, 2022
+# DEPENDENCIES: texlive-bin, texlive-formatsextra, texlive-latexextra, texlive-bibtexextra and LaTeX Workshop plugin
+#               for Code or Codium
+
+import os
+from sys import argv
+
+def main():
+    if len(argv) > 2:
+        # Change SOURCE to prefered directory-destination of your template (not actual '.tex' file)
+        SOURCE = '~/Documents/latex-template'
+        PROJECT = argv[1]
+        PATH = argv[2]
+        if PATH[-1] == '/':
+            pass
+        else:
+            PATH += '/'
+    else:
+        print('''You need to specify "project-name" and "path"
+        example: latex new-project ~/Documents''')
+    
+    ABSOLUTE = PATH + PROJECT
+    newproject(SOURCE, ABSOLUTE)
+
+def newproject(SOURCE, ABSOLUTE):
+    commands = [f'cp -r {SOURCE} {ABSOLUTE}', f'code -r {ABSOLUTE}']
+    
+    for command in commands:
+        os.system(command)
+
+
+if __name__ == '__main__':
+    main()
